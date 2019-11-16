@@ -1,0 +1,201 @@
+<template>
+  <div class="window">
+    <div class="header" :class="{'menu-opened': openMenuFlag}">
+      <div class="burger-container" @click="openMenu()">
+        <div id="burger">
+          <div class="bar topBar"></div>
+          <div class="bar btmBar"></div>
+        </div>
+      </div>
+      <!--<div class="icon icon-apple">-->
+        <!--<img :src="icon" alt="">-->
+      <!--</div>-->
+      <ul class="menu" v-if="openMenuFlag">
+        <li class="menu-item"><a href="/">Top</a></li>
+        <li class="menu-item"><a href="/posts">ブログ一覧</a></li>
+        <li class="menu-item"><a href="https://mataki-tanaka.me" target="_blank">Mataki Tanaka</a></li>
+      </ul>
+      <!--<div class="shop icon icon-bag"></div>-->
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        openMenuFlag: false
+        // icon: require("~/assets/logo-black.png")
+      }
+    },
+    methods: {
+      openMenu: function() {
+        this.openMenuFlag = !this.openMenuFlag
+      }
+    }
+  };
+</script>
+
+<style lang="scss" scoped>
+  @import url(https://fonts.googleapis.com/css?family=Ek+Mukta:200);
+  $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
+  $mukta: 'Ek Mukta', sans-serif;;
+  $menuItems: 7;
+
+  .window {
+    /*position: relative;*/
+    /*display: block;*/
+    /*width: 360px;*/
+    /*height: 567px;*/
+    /*margin: 100px auto 0;*/
+    /*box-shadow: 0 0 65px 15px rgba(#000, 0.2);*/
+    /*overflow: hidden;*/
+    /*border-radius: 3px;*/
+    /*background: #F1F1F1;*/
+    .header {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      height: 50px;
+      width: 100%;
+      background: rgba(#000,0.8);
+      overflow: hidden;
+      transition: all 0.5s ease-out, background 1s ease-out;
+      transition-delay: 0.2s;
+      z-index: 1;
+      .burger-container {
+        position: relative;
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+        transform: rotate(0deg);
+        transition: all 0.3s $cubic;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        #burger {
+          width: 18px;
+          height: 8px;
+          position: relative;
+          display: block;
+          margin: -4px auto 0;
+          top: 50%;
+          .bar {
+            width: 100%;
+            height: 1px;
+            display: block;
+            position: relative;
+            background: #FFF;
+            transition: all 0.3s $cubic;
+            transition-delay: 0s;
+            &.topBar {
+              transform: translateY(0px) rotate(0deg);
+            }
+            &.btmBar {
+              transform: translateY(6px) rotate(0deg);
+            }
+          }
+        }
+      }
+      .icon {
+        display: inline-block;
+        position: absolute;
+        height: 100%;
+        line-height: 50px;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        color: #FFF;
+        font-size: 22px;
+        left: 50%;
+        transform: translateX(-50%);
+        &.icon-bag {
+          right: 0;
+          top: 0;
+          left: auto;
+          transform: translateX(0px);
+          transition: transform 0.5s $cubic;
+          transition-delay: 0.65s;
+        }
+      }
+      ul.menu {
+        position: relative;
+        display: block;
+        padding: 0px 48px 0;
+        list-style: none;
+        li.menu-item {
+          border-bottom: 1px solid #333;
+          margin-top: 5px;
+          transform: scale(1.15) translateY(-30px);
+          opacity: 0;
+          transition: transform 0.5s $cubic, opacity 0.6s $cubic;
+          @for $i from 1 through $menuItems {
+            &:nth-child(#{$i}) {
+              transition-delay: #{0.56 - ($i * 0.07)}s;
+            }
+          }
+          a {
+            display: block;
+            position: relative;
+            color: #FFF;
+            font-family: $mukta;
+            font-weight: 100;
+            text-decoration: none;
+            font-size: 22px;
+            line-height: 2.35;
+            font-weight: 200;
+            width: 100%;
+          }
+        }
+      }
+      &.menu-opened {
+        height: 100%;
+        background-color: #000;
+        transition: all 0.3s ease-in, background 0.5s ease-in;
+        transition-delay: 0.25s;
+        .burger-container {
+          transform: rotate(90deg);
+          #burger {
+            .bar {
+              transition: all 0.4s $cubic;
+              transition-delay: 0.2s;
+              &.topBar {
+                transform: translateY(4px) rotate(45deg);
+              }
+              &.btmBar {
+                transform: translateY(3px) rotate(-45deg);
+              }
+            }
+          }
+        }
+        ul.menu {
+          li.menu-item {
+            transform: scale(1) translateY(0px);
+            opacity: 1;
+            @for $i from 1 through $menuItems {
+              &:nth-child(#{$i}) {
+                transition-delay: #{0.07 * $i+0.2}s;
+              }
+            }
+          }
+        }
+        .icon {
+          &.icon-bag {
+            transform: translateX(75px);
+            transition-delay: 0.3s;
+          }
+        }
+      }
+    }
+    @media(max-width: 600px) {
+      /*width: 100%;*/
+      /*height: 100vh;*/
+      /*margin: 0;*/
+      /*border-radius: 0px;*/
+      .header {
+        position: fixed;
+      }
+    }
+  }
+</style>
