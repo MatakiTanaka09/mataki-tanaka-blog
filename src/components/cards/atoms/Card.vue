@@ -98,7 +98,7 @@
   @media screen and (min-width: 481px) {
     .post__card {
       width: 45%;
-      margin: 8px;
+      margin: 4px;
       .card__thumbnail {
         /*max-width: 180px;*/
         /*max-height: 120px;*/
@@ -119,7 +119,7 @@
   // デスクトップ、タブレット横
   @media screen and (min-width: 769px) {
     .post__card {
-      width: 23%;
+      width: 24%;
       &__title {
         .title__date {
           &__month {

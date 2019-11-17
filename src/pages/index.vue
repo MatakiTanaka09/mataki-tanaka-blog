@@ -11,7 +11,7 @@
               <div class="top__section">
                 <div class="top__container">
                   <div class="top__wrapper">
-                    {{ image }}
+                    <img :src="image" alt="">
                   </div>
                 </div>
               </div>
@@ -98,8 +98,8 @@
           },
         },
         imgaes: [
-          "準備中...1",
-          "準備中...2"
+          require("~/assets/logo-black.png"),
+          require("~/assets/logo-black.png")
         ]
       }
     },
@@ -128,7 +128,6 @@
   margin: 16px;
   .top__boxes {
     .top__slider {
-      z-index: -1;
       .top__section {
         width: 375px;
         height: 375px;
@@ -265,12 +264,13 @@
           justify-content: center;
           align-items: center;
           padding: 24px 0;
-
           .news__wrapper {
             margin: 0 auto;
           }
         }
       }
+    }
+    .blog__index {
     }
     .profile {
       display: flex;
@@ -297,6 +297,8 @@
 // デスクトップ、タブレット横
 @media screen and (min-width: 769px) {
   .top__container {
+    max-width: 1024px;
+    margin: 0 auto;
   }
 }
 </style>

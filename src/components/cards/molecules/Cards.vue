@@ -42,6 +42,7 @@
     .post__card__lists {
       display: flex;
       flex-wrap: wrap;
+      margin: 0 auto;
     }
   }
 

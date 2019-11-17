@@ -113,7 +113,7 @@ const config = {
         'content_type': ctfConfig.CTF_BLOG_POST_TYPE_ID
       }).then(entries => {
         return [
-          ...entries.items.map(entry => `/posts/${entry.fields.slug}`)
+          ...entries.items.map(entry => `/posts/${entry.sys.id}`)
         ]
       })
     }
