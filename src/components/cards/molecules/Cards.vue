@@ -34,28 +34,20 @@
 </script>
 
 <style lang="scss" scoped>
-  .posts__container {
-    margin: 16px;
-    .post__card__lists {
-      display: block;
-    }
+  .post__card__lists {
+    display: block;
   }
   // SP横、タブレット縦
   @media screen and (min-width: 481px) {
-    .posts__container {
-      margin: 48px;
-      .post__card__lists {
-        display: flex;
-        flex-wrap: wrap;
-      }
+    .post__card__lists {
+      display: flex;
+      flex-wrap: wrap;
     }
   }
 
   // デスクトップ、タブレット横
   @media screen and (min-width: 769px) {
-    .posts__container {
-      .post__card__lists {
-      }
+    .post__card__lists {
     }
   }
 </style>

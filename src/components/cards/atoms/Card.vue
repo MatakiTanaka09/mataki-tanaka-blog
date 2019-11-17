@@ -53,8 +53,9 @@
   }
   .post__card {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 4px;
+    padding: 16px;
+    background-color: white;
+    margin: 8px 0;
     .card__thumbnail {
       width: 100%;
       height: auto;
@@ -96,7 +97,8 @@
   // SP横、タブレット縦
   @media screen and (min-width: 481px) {
     .post__card {
-      width: 50%;
+      width: 45%;
+      margin: 8px;
       .card__thumbnail {
         /*max-width: 180px;*/
         /*max-height: 120px;*/
@@ -117,7 +119,7 @@
   // デスクトップ、タブレット横
   @media screen and (min-width: 769px) {
     .post__card {
-      width: 25%;
+      width: 23%;
       &__title {
         .title__date {
           &__month {

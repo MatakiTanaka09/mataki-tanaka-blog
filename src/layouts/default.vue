@@ -27,17 +27,31 @@
 </script>
 
 <style lang="scss">
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+  body {
+    font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: calc(10px + 0.33vw);
+    -webkit-font-smoothing: antialiased;
+    /*padding: 5vh 10vw;*/
+    color: #121314;
+    display: block;
+    margin: 8px;
+    background-color: #F1F1F1;
+  }
+  h1 {
+    font-size: 3.5em;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+  h2 {
+    font-size: 3.0em;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+  p {
+    font-size: 1.6em;
+    font-weight: 300;
+    line-height: 1.4;
+  }
 
 *,
 *:before,

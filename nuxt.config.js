@@ -22,7 +22,8 @@ const config = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/logo-block.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/logo-block.png' },
+      { href: "https://fonts.googleapis.com/css?family=Rubik:300,500,700", rel: "stylesheet" }
     ]
   },
   /*
@@ -33,11 +34,15 @@ const config = {
   ** Global CSS
   */
   css: [
+    'swiper/dist/css/swiper.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [{ src: '~plugins/contentful.js' }],
+  plugins: [
+    { src: '~plugins/contentful.js' },
+    { src: '~plugins/vue-awesome-swiper.js', ssr: false }
+  ],
   /*
   ** Nuxt.js dev-modules
   */
@@ -51,8 +56,14 @@ const config = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    'nuxt-webfontloader'
   ],
+  webfontloader: {
+    google: {
+      families: ['Rubik', "ヒラギノ角ゴ Pro W3", "Shuei MaruGo B", "Yu Gothic", "Hiragino Kaku Gothic Pro", "Meiryo UI", 'メイリオ', 'Meiryo', "ＭＳ Ｐゴシック", "MS PGothic"]
+    }
+  },
   styleResources: {
     scss: [
       '~/assets/sass/foundation/variable/_index.scss',
@@ -91,7 +102,10 @@ const config = {
       //     exclude: /(node_modules)/
       //   })
       // }
-    }
+    },
+    vendor: [
+      'vue-awesome-swiper'
+    ]
   },
   generate: {
     routes () {

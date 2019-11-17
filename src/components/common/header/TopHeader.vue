@@ -7,13 +7,35 @@
           <div class="bar btmBar"></div>
         </div>
       </div>
-      <!--<div class="icon icon-apple">-->
+      <div class="icon icon-apple">
+        <nuxt-link
+          :to="{ name: 'posts' }"
+        >
+          Blog
+        </nuxt-link>
+        <!--<a href="/posts">Blog</a>-->
         <!--<img :src="icon" alt="">-->
-      <!--</div>-->
+      </div>
       <ul class="menu" v-if="openMenuFlag">
-        <li class="menu-item"><a href="/">Top</a></li>
-        <li class="menu-item"><a href="/posts">ブログ一覧</a></li>
-        <li class="menu-item"><a href="https://mataki-tanaka.me" target="_blank">Mataki Tanaka</a></li>
+        <li class="menu-item">
+          <nuxt-link
+            :to="{ name: 'index' }"
+            @click.native="openMenu()"
+          >
+            Top
+          </nuxt-link>
+        </li>
+        <li class="menu-item">
+          <nuxt-link
+            :to="{ name: 'posts' }"
+            @click.native="openMenu()"
+          >
+            Blog
+          </nuxt-link>
+        </li>
+        <li class="menu-item">
+          <a href="https://mataki-tanaka.me" target="_blank">Mataki Tanaka</a>
+        </li>
       </ul>
       <!--<div class="shop icon icon-bag"></div>-->
     </div>
@@ -25,7 +47,6 @@
     data() {
       return {
         openMenuFlag: false
-        // icon: require("~/assets/logo-black.png")
       }
     },
     methods: {
@@ -42,6 +63,12 @@
   $mukta: 'Ek Mukta', sans-serif;;
   $menuItems: 7;
 
+  a {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    font-weight: 600;
+  }
   .window {
     /*position: relative;*/
     /*display: block;*/
@@ -63,7 +90,7 @@
       overflow: hidden;
       transition: all 0.5s ease-out, background 1s ease-out;
       transition-delay: 0.2s;
-      z-index: 1;
+      z-index: 999;
       .burger-container {
         position: relative;
         display: inline-block;
@@ -101,7 +128,7 @@
       .icon {
         display: inline-block;
         position: absolute;
-        height: 100%;
+        /*height: 100%;*/
         line-height: 50px;
         width: 50px;
         height: 50px;

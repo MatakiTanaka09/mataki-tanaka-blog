@@ -23,9 +23,8 @@
         </div>
       </div>
       <div class="article__content">
-        <vue-markdown>
-          {{ article.fields.body }}
-        </vue-markdown>
+        <div class="body" v-html="$md.render(article.fields.body)"></div>
+          <!--{{ article.fields.body }}-->
       </div>
     </div>
   </div>
@@ -35,14 +34,12 @@
   import { createClient } from '~/plugins/contentful'
   import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
   import { richTextFromMarkdown } from '@contentful/rich-text-from-markdown';
-  import VueMarkdown from 'vue-markdown';
   import { customDate } from "~/utils/date";
 
   const client = createClient();
   export default {
     name: "posts-id",
     components: {
-      VueMarkdown
     },
     props: {
       id: {
@@ -81,7 +78,9 @@
 <style lang="scss" scoped>
   .slug__container {
     max-width: 800px;
-    margin: 16px;
+    margin: 8px 8px 16px 8px;
+    padding: 32px;
+    background-color: white;
     .article {
       width: 100%;
       margin: 0 auto;
@@ -129,6 +128,22 @@
       &__content {
         word-wrap: break-word;
         width: 100%;
+        .body /deep/ {
+          h2 {
+            margin-bottom: 8px;
+          }
+          p {
+            margin-bottom: 12px;
+          }
+          ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 8px;
+            li {
+              margin-bottom: 8px;
+            }
+          }
+        }
       }
     }
   }
